@@ -446,9 +446,9 @@ class DCATAPITPackagePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
             # remove holder info if pkg is local, use org as a source
             # see https://github.com/geosolutions-it/ckanext-dcatapit/pull/213#issuecomment-410668740
             _dict['dataset_is_local'] = helpers.dataset_is_local(_dict['id'])
-            if _dict['dataset_is_local']:
-                _dict.pop('holder_identifier', None)
-                _dict.pop('holder_name', None)
+            #if _dict['dataset_is_local']:
+                #_dict.pop('holder_identifier', None)
+                #_dict.pop('holder_name', None)
             self._update_pkg_rights_holder(_dict)
 
         return search_results
@@ -512,13 +512,14 @@ class DCATAPITPackagePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm,
         # remove holder info if pkg is local, use org as a source
         # see https://github.com/geosolutions-it/ckanext-dcatapit/pull/213#issuecomment-410668740
         pkg_dict['dataset_is_local'] = helpers.dataset_is_local(pkg_dict['id'])
-        if pkg_dict['dataset_is_local']:
-            pkg_dict.pop('holder_identifier', None)
-            pkg_dict.pop('holder_name', None)
+        #if pkg_dict['dataset_is_local']:
+            #pkg_dict.pop('holder_identifier', None)
+            #pkg_dict.pop('holder_name', None)
         return self._update_pkg_rights_holder(pkg_dict)
 
     def _update_pkg_rights_holder(self, pkg_dict, org=None):
-        if pkg_dict.get('type') != 'dataset':
+        #log.error(helpers.json_dump(pkg_dict))
+	if pkg_dict.get('type') != 'dataset':
             return pkg_dict
         if not (pkg_dict.get('holder_identifier') and pkg_dict.get('holder_name')):
             if not pkg_dict.get('owner_org'):

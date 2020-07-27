@@ -855,10 +855,10 @@ class ItalianDCATAPProfile(RDFProfile):
         }
 
         dataset_is_local = dataset_dict.get('dataset_is_local')
-        if dataset_is_local:
-            _org_name = interfaces.get_for_group_or_organization(dataset_dict['owner_org'])
-            if _org_name.get('title'):
-                loc_dict['holder_name'] = _org_name['title']
+        #if dataset_is_local:
+        #    _org_name = interfaces.get_for_group_or_organization(dataset_dict['owner_org'])
+        #    if _org_name.get('title'):
+        #        loc_dict['holder_name'] = _org_name['title']
             
         # rights holder should use special trick to avoid duplicated foaf:name entries
         if holder_use_dataset and holder_ref:
@@ -964,6 +964,7 @@ class ItalianDCATAPProfile(RDFProfile):
                                          DCT.rightsHolder,
                                          use_default_lang=dataset_is_local)
         else:
+	    log.error("------------- USING ORG AS RIGHTS HOLDER ------------- dataset_dict: %s", dataset_dict)
             use_dataset = False
             agent_name = org_dict.get('name')
             agent_id = org_dict.get('identifier')

@@ -56,6 +56,10 @@
 .bold {
     font-weight: bold;
 }
+.control-custom {
+    font-size: 1em!important;
+}
+
 .control-custom .remove {
     font-size: 14px;
 }
@@ -84,7 +88,7 @@
     color: #fff;
     background-color: #bd362f;
     position: relative;
-    font-size: 0px;
+    font-size: 12px;
     top: 0;
     left: 5px;
     padding: 6px 8px;
@@ -611,6 +615,6 @@ ul.ui-tabs-nav {
 
 .removable .remove .button {
     border: none;
-    border-radius: 50%;
+    #border-radius: 50%;
     margin-right: 5px;
 }
